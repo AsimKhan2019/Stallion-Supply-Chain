@@ -1,0 +1,713 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6761EB4B-286D-4AEC-B94D-BE0BC16FFC4F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StallionSuppyChain</RootNamespace>
+    <AssemblyName>StallionSuppyChain</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ManifestCertificateThumbprint>349C6BE56EDFB10D3F5FFF194819149F2F84D70E</ManifestCertificateThumbprint>
+    <ManifestKeyFile>StallionSuppyChain_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>C:\Users\jv\Desktop\backup\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\UpdatePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\UpdatePassword.Designer.cs">
+      <DependentUpon>UpdatePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserMaintainance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\UserMaintainance.Designer.cs">
+      <DependentUpon>UserMaintainance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WorkerMaintainace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\WorkerMaintainace.Designer.cs">
+      <DependentUpon>WorkerMaintainace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Reset_Password\Admin_Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Reset_Password\Admin_Update.Designer.cs">
+      <DependentUpon>Admin_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Reset_Password\Reset_Password.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Reset_Password\Reset_Password.Designer.cs">
+      <DependentUpon>Reset_Password.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_User_Role\Admin_Role_Inquiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_User_Role\Admin_Role_Inquiry.Designer.cs">
+      <DependentUpon>Admin_Role_Inquiry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_User_Role\Admin_Role_Save.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_User_Role\Admin_Role_Save.Designer.cs">
+      <DependentUpon>Admin_Role_Save.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_User_Role\Admin_Role_Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_User_Role\Admin_Role_Update.Designer.cs">
+      <DependentUpon>Admin_Role_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\Theme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControl\Theme.Designer.cs">
+      <DependentUpon>Theme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DRM\DRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DRM\DRM.Designer.cs">
+      <DependentUpon>DRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DRM\DRMInquiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DRM\DRMInquiry.Designer.cs">
+      <DependentUpon>DRMInquiry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="Item_Master\ITEMMASTER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item_Master\ITEMMASTER.Designer.cs">
+      <DependentUpon>ITEMMASTER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maintainance\frmProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maintainance\frmProject.Designer.cs">
+      <DependentUpon>frmProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maintainance\FrmSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maintainance\FrmSupplier.Designer.cs">
+      <DependentUpon>FrmSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MRI\Material_Releasing_Inquiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MRI\Material_Releasing_Inquiry.designer.cs">
+      <DependentUpon>Material_Releasing_Inquiry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MRI\Material_Releasing_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MRI\Material_Releasing_Main.designer.cs">
+      <DependentUpon>Material_Releasing_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MRI\Material_Releasing_Project_Sel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MRI\Material_Releasing_Project_Sel.designer.cs">
+      <DependentUpon>Material_Releasing_Project_Sel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MRI\Material_verifyForRelease.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MRI\Material_verifyForRelease.Designer.cs">
+      <DependentUpon>Material_verifyForRelease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procurement\ItemMasterLookUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procurement\ItemMasterLookUp.Designer.cs">
+      <DependentUpon>ItemMasterLookUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procurement\MaterialRequestForApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procurement\MaterialRequestForApproval.Designer.cs">
+      <DependentUpon>MaterialRequestForApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procurement\MaterialRequestIquiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procurement\MaterialRequestIquiry.Designer.cs">
+      <DependentUpon>MaterialRequestIquiry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procurement\MaterialRequestMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procurement\MaterialRequestMain.Designer.cs">
+      <DependentUpon>MaterialRequestMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductAttribute.cs" />
+    <Compile Include="Products.cs" />
+    <Compile Include="Products\ProductMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\ProductMaster.Designer.cs">
+      <DependentUpon>ProductMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\ProductPlanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\ProductPlanner.Designer.cs">
+      <DependentUpon>ProductPlanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\Barcode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Barcode.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\PrintBarcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\PrintBarcode.Designer.cs">
+      <DependentUpon>PrintBarcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlComboBox.cs" />
+    <EmbeddedResource Include="Admin\UpdatePassword.resx">
+      <DependentUpon>UpdatePassword.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\UserMaintainance.resx">
+      <DependentUpon>UserMaintainance.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\WorkerMaintainace.resx">
+      <DependentUpon>WorkerMaintainace.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Reset_Password\Admin_Update.resx">
+      <DependentUpon>Admin_Update.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Reset_Password\Reset_Password.resx">
+      <DependentUpon>Reset_Password.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_User_Role\Admin_Role_Inquiry.resx">
+      <DependentUpon>Admin_Role_Inquiry.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_User_Role\Admin_Role_Save.resx">
+      <DependentUpon>Admin_Role_Save.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_User_Role\Admin_Role_Update.resx">
+      <DependentUpon>Admin_Role_Update.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DRM\DRM.resx">
+      <DependentUpon>DRM.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DRM\DRMInquiry.resx">
+      <DependentUpon>DRMInquiry.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Item_Master\ITEMMASTER.resx">
+      <DependentUpon>ITEMMASTER.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintainance\frmProject.resx">
+      <DependentUpon>frmProject.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintainance\FrmSupplier.resx">
+      <DependentUpon>FrmSupplier.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MRI\Material_Releasing_Inquiry.resx">
+      <DependentUpon>Material_Releasing_Inquiry.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MRI\Material_Releasing_Main.resx">
+      <DependentUpon>Material_Releasing_Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MRI\Material_Releasing_Project_Sel.resx">
+      <DependentUpon>Material_Releasing_Project_Sel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MRI\Material_verifyForRelease.resx">
+      <DependentUpon>Material_verifyForRelease.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procurement\ItemMasterLookUp.resx">
+      <DependentUpon>ItemMasterLookUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procurement\MaterialRequestForApproval.resx">
+      <DependentUpon>MaterialRequestForApproval.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procurement\MaterialRequestIquiry.resx">
+      <DependentUpon>MaterialRequestIquiry.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procurement\MaterialRequestMain.resx">
+      <DependentUpon>MaterialRequestMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\ProductMaster.resx">
+      <DependentUpon>ProductMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\ProductPlanner.resx">
+      <DependentUpon>ProductPlanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase Order\PoForApproval.resx">
+      <DependentUpon>PoForApproval.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase Order\POInquiry.resx">
+      <DependentUpon>POInquiry.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase Order\POSelection.resx">
+      <DependentUpon>POSelection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase Order\PurchaseOrder.resx">
+      <DependentUpon>PurchaseOrder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase Order\RequestBatch.resx">
+      <DependentUpon>RequestBatch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ApprovedPO.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ApprovedPO.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Barcode.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Barcode.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InventoryReportGenerator.resx">
+      <DependentUpon>InventoryReportGenerator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InventoryReport_Live.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryReport_Live.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MRM_Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MRM_Report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\POM_Reports.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>POM_Reports.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PrintBarcode.resx">
+      <DependentUpon>PrintBarcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TESTREPORT.resx">
+      <DependentUpon>TESTREPORT.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCMLogIN.resx">
+      <DependentUpon>SCMLogIN.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCMMain.resx">
+      <DependentUpon>SCMMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Purchase Order\PoForApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase Order\PoForApproval.Designer.cs">
+      <DependentUpon>PoForApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase Order\POInquiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase Order\POInquiry.Designer.cs">
+      <DependentUpon>POInquiry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase Order\POSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase Order\POSelection.Designer.cs">
+      <DependentUpon>POSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase Order\PurchaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase Order\PurchaseOrder.Designer.cs">
+      <DependentUpon>PurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase Order\RequestBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase Order\RequestBatch.Designer.cs">
+      <DependentUpon>RequestBatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ApprovedPO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApprovedPO.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\dtsTranPODetails.cs">
+      <DependentUpon>dtsTranPODetails.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\dtsTranPODetails.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtsTranPODetails.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InventoryReportGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\InventoryReportGenerator.Designer.cs">
+      <DependentUpon>InventoryReportGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InventoryReport_Live.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryReport_Live.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MRMDataReport.cs">
+      <DependentUpon>MRMDataReport.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MRMDataReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MRMDataReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MRM_Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MRM_Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\POHeader.cs">
+      <DependentUpon>POHeader.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\POHeader.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POHeader.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\POMList.cs">
+      <DependentUpon>POMList.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\POMList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POMList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\POM_Reports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POM_Reports.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TESTREPORT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\TESTREPORT.Designer.cs">
+      <DependentUpon>TESTREPORT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCMLogIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCMLogIN.Designer.cs">
+      <DependentUpon>SCMLogIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCMMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCMMain.Designer.cs">
+      <DependentUpon>SCMMain.cs</DependentUpon>
+    </Compile>
+    <None Include="StallionSuppyChain_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CustomControl\Theme.vb" />
+    <None Include="Resources\delete1.png" />
+    <Content Include="Resources\SCMLOGO1.jpg" />
+    <None Include="Reports\dtsTranPODetails.xsc">
+      <DependentUpon>dtsTranPODetails.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dtsTranPODetails.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtsTranPODetails.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\dtsTranPODetails.xss">
+      <DependentUpon>dtsTranPODetails.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\MRMDataReport.xsc">
+      <DependentUpon>MRMDataReport.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\MRMDataReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MRMDataReport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\MRMDataReport.xss">
+      <DependentUpon>MRMDataReport.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\POMList.xsc">
+      <DependentUpon>POMList.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\POMList.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>POMList.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\POMList.xss">
+      <DependentUpon>POMList.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\12345rws.png" />
+    <None Include="Resources\Untitled-1.png" />
+    <None Include="Resources\List 2-48.png" />
+    <None Include="Resources\Change User Male-48.png" />
+    <None Include="Resources\Add User Male-48.png" />
+    <None Include="Resources\Print-481.png" />
+    <None Include="Resources\Barcode-48.png" />
+    <None Include="Resources\Material Request1.png" />
+    <None Include="Resources\Print-48.png" />
+    <None Include="Resources\Save Archive-48.png" />
+    <None Include="Resources\Cancel File-48.png" />
+    <None Include="Resources\Check File-481.png" />
+    <None Include="Resources\Add List-48.png" />
+    <None Include="Resources\Restart-48.png" />
+    <None Include="Resources\Check File-48.png" />
+    <None Include="Resources\Create New-40.png" />
+    <None Include="Resources\Filing Cabinet-481.png" />
+    <None Include="Resources\Card in Use-481.png" />
+    <None Include="Resources\Maintenance1.png" />
+    <None Include="Resources\Combo Chart-48.png" />
+    <None Include="Resources\Generic Book File Type-48.png" />
+    <None Include="Resources\Shipped-48.png" />
+    <None Include="Resources\Filing Cabinet-48.png" />
+    <None Include="Resources\Card in Use-48.png" />
+    <None Include="Resources\Mobile Home-48 %281%29.png" />
+    <None Include="Resources\Lift Cart Here-48.png" />
+    <None Include="Resources\Buy Upgrade-48.png" />
+    <None Include="Resources\DRM-48.png" />
+    <None Include="Resources\Purchase Order-48.png" />
+    <None Include="Resources\request.png1.png" />
+    <None Include="Resources\request.png.png" />
+    <None Include="Resources\Material Request.png" />
+    <None Include="Resources\admin.jpg" />
+    <None Include="Resources\download.jpg" />
+    <None Include="Reports\POHeader.xsc">
+      <DependentUpon>POHeader.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\POHeader.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>POHeader.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\POHeader.xss">
+      <DependentUpon>POHeader.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\1.jpg" />
+    <None Include="Resources\32_reports.png" />
+    <None Include="Resources\maintenance.png" />
+    <None Include="Resources\masterfile %282%29.png" />
+    <None Include="Resources\tool.png" />
+    <None Include="Resources\movement_32.png" />
+    <None Include="Resources\material_32.png" />
+    <None Include="Resources\releasing32.png" />
+    <None Include="Resources\chargeable item_32.png" />
+    <None Include="Resources\fixed asset_32.png" />
+    <None Include="Resources\receiving_32.png" />
+    <None Include="Resources\PO_32.png" />
+    <None Include="Resources\request_32.png" />
+    <None Include="Resources\Fatcow-Farm-Fresh-Export-excel - Copy.ico" />
+    <None Include="Resources\display all.ico" />
+    <None Include="Resources\login1.png" />
+    <None Include="Resources\gear.png" />
+    <None Include="Resources\Folder.png" />
+    <None Include="Resources\cart.png" />
+    <None Include="Resources\REPORTS.png" />
+    <None Include="Resources\BACK2.png" />
+    <None Include="Resources\BACK1.png" />
+    <None Include="Resources\fixed.png" />
+    <None Include="Resources\Logistics1.png" />
+    <None Include="Resources\Logistics.png" />
+    <None Include="Resources\lgin.png" />
+    <None Include="Resources\login-copy.png" />
+    <None Include="Resources\main page %281%29.png" />
+    <None Include="Resources\login.png" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\find.ico" />
+    <None Include="Resources\print.ico" />
+    <None Include="Resources\revert.ico" />
+    <None Include="Resources\delete.ico" />
+    <None Include="Resources\new.ico" />
+    <None Include="Resources\edit.ico" />
+    <None Include="Resources\save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

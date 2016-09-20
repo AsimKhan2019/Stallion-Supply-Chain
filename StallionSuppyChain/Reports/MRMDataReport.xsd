@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MRMDataReport" targetNamespace="http://tempuri.org/MRMDataReport.xsd" xmlns:mstns="http://tempuri.org/MRMDataReport.xsd" xmlns="http://tempuri.org/MRMDataReport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MRMDataReport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="MRMDataReport" msprop:Generator_UserDSName="MRMDataReport" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MRMList" msprop:Generator_UserTableName="MRMList" msprop:Generator_RowDeletedName="MRMListRowDeleted" msprop:Generator_TableClassName="MRMListDataTable" msprop:Generator_RowChangedName="MRMListRowChanged" msprop:Generator_RowClassName="MRMListRow" msprop:Generator_RowChangingName="MRMListRowChanging" msprop:Generator_RowEvArgName="MRMListRowChangeEvent" msprop:Generator_RowEvHandlerName="MRMListRowChangeEventHandler" msprop:Generator_TablePropName="MRMList" msprop:Generator_TableVarName="tableMRMList" msprop:Generator_RowDeletingName="MRMListRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MRMNO" msprop:Generator_UserColumnName="MRMNO" msprop:Generator_ColumnPropNameInRow="MRMNO" msprop:Generator_ColumnVarNameInTable="columnMRMNO" msprop:Generator_ColumnPropNameInTable="MRMNOColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Item_Code" msprop:Generator_UserColumnName="Item_Code" msprop:Generator_ColumnPropNameInRow="Item_Code" msprop:Generator_ColumnVarNameInTable="columnItem_Code" msprop:Generator_ColumnPropNameInTable="Item_CodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Item_Description" msprop:Generator_UserColumnName="Item_Description" msprop:Generator_ColumnPropNameInRow="Item_Description" msprop:Generator_ColumnVarNameInTable="columnItem_Description" msprop:Generator_ColumnPropNameInTable="Item_DescriptionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Item_Specification" msprop:Generator_UserColumnName="Item_Specification" msprop:Generator_ColumnPropNameInRow="Item_Specification" msprop:Generator_ColumnVarNameInTable="columnItem_Specification" msprop:Generator_ColumnPropNameInTable="Item_SpecificationColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Unit" msprop:Generator_UserColumnName="Unit" msprop:Generator_ColumnPropNameInRow="Unit" msprop:Generator_ColumnVarNameInTable="columnUnit" msprop:Generator_ColumnPropNameInTable="UnitColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MRM_Quantity" msprop:Generator_UserColumnName="MRM_Quantity" msprop:Generator_ColumnPropNameInRow="MRM_Quantity" msprop:Generator_ColumnVarNameInTable="columnMRM_Quantity" msprop:Generator_ColumnPropNameInTable="MRM_QuantityColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_UserColumnName="Amount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInTable="AmountColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cost_Code" msprop:Generator_UserColumnName="Cost_Code" msprop:Generator_ColumnPropNameInRow="Cost_Code" msprop:Generator_ColumnVarNameInTable="columnCost_Code" msprop:Generator_ColumnPropNameInTable="Cost_CodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Project_Code" msprop:Generator_UserColumnName="Project_Code" msprop:Generator_ColumnPropNameInRow="Project_Code" msprop:Generator_ColumnVarNameInTable="columnProject_Code" msprop:Generator_ColumnPropNameInTable="Project_CodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ReportType" msprop:Generator_UserColumnName="ReportType" msprop:Generator_ColumnPropNameInRow="ReportType" msprop:Generator_ColumnVarNameInTable="columnReportType" msprop:Generator_ColumnPropNameInTable="ReportTypeColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

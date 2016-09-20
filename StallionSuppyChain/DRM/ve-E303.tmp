@@ -1,0 +1,343 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
+
+namespace StallionSuppyChain.DRM
+{
+    public partial class DRM : Form
+    {
+        public DRM()
+        {
+            InitializeComponent();
+        }
+        private string conStr = ConfigurationManager.ConnectionStrings["SCM_STALLIONLIVE"].ToString();
+        public void GetPOID(string parameter1)
+        {
+
+            GetSupplier();
+            WorkerDetails();
+            GetProjectCode();
+            GetProjectCode1();
+            WorkerDetails1();
+            GetCurrency();
+
+
+
+            TXtPOID.Text = parameter1; 
+            SqlConnection sqlCnn;
+            SqlCommand sqlCmd;
+            string sql = null;
+ 
+            sql = "[dbo].[LIST_RETRIEVEPODETAILS] '" + TXtPOID.Text + "'";
+
+            sqlCnn = new SqlConnection(conStr);
+            try
+            {
+                sqlCnn.Open();
+                sqlCmd = new SqlCommand(sql, sqlCnn);
+                SqlDataReader sqlReader = sqlCmd.ExecuteReader();
+                while (sqlReader.Read())
+                {
+                    TxtPoNumber.Text = sqlReader["Request_No"].ToString();
+                    txtMRMID.Text = sqlReader["MRMID"].ToString();
+                    cboSupplier.SelectedValue = sqlReader["SupplierID"].ToString();
+                    cboCostCode.SelectedValue = sqlReader["Currency_Code"].ToString();
+ 
+                    txtdiscountAmount.Text = sqlReader["DicountAmount"].ToString();
+                    txtGrossAmount.Text = sqlReader["Amount"].ToString();
+                    txtNetOfVat.Text = sqlReader["NetAmount"].ToString();
+                    checkBox1.Checked = Convert.ToBoolean(sqlReader["Vat_Inclusive"].ToString());
+                    
+ 
+                    GetMRMID(txtMRMID.Text);
+
+
+                }
+                sqlReader.Close();
+                sqlCmd.Dispose();
+                sqlCnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+
+        private void LoadItemMaster(int MRMNO)
+        {
+
+            //e2
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand cmd = new SqlCommand("[dbo].[LIST_LoadMaterialRequestDetail]", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MRMID", MRMNO);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                using (SqlDataAdapter adap = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    adap.Fill(dt);
+                    //dataGridView1.DataSource = dt;
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+
+                        this.dataGridView1.Rows.Add(row["POQuantity"].ToString(), row["Amount"].ToString(), row["DicountAmount"].ToString(), row["NetAmount"].ToString(),
+                        row["CosDescription"].ToString(), row["ITEMCODE"].ToString(), row["MRM Quantity"].ToString(), row["MRM UOM"].ToString(), row["Mstr UOM"].ToString()
+                        , row["Category1"].ToString(), row["Category2"].ToString(), row["Category3"].ToString(), row["ITEMDESCRIPTION"].ToString()
+                        , row["ITEMDESCRIPTION2"].ToString(), row["ITEMSPEC1"].ToString(), row["ITEMSPEC2"].ToString(), row["ITEMSPEC3"].ToString(), row["TranLineNo"].ToString()
+                        );
+
+
+                    }
+
+                }
+            }
+
+            dataGridView1.Columns[17].Visible = false;
+
+
+        }
+        private void LoadItemMaster(int MRMNO)
+        {
+            //e2
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand cmd = new SqlCommand("[dbo].[LIST_LoadMaterialRequestDetail]", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MRMID", MRMNO);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                using (SqlDataAdapter adap = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    adap.Fill(dt);
+                    //dataGridView1.DataSource = dt;
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        this.dataGridView1.Rows.Add(row["POQuantity"].ToString(), row["Amount"].ToString(), row["DicountAmount"].ToString(), row["NetAmount"].ToString(),
+                        row["CosDescription"].ToString(), row["ITEMCODE"].ToString(), row["MRM Quantity"].ToString(), row["MRM UOM"].ToString(), row["Mstr UOM"].ToString()
+                        , row["Category1"].ToString(), row["Category2"].ToString(), row["Category3"].ToString(), row["ITEMDESCRIPTION"].ToString()
+                        , row["ITEMDESCRIPTION2"].ToString(), row["ITEMSPEC1"].ToString(), row["ITEMSPEC2"].ToString(), row["ITEMSPEC3"].ToString(), row["TranLineNo"].ToString()
+                        );
+
+
+                    }
+
+                }
+            }
+
+            dataGridView1.Columns[17].Visible = false;
+
+
+        }
+
+        public void GetMRMID(string MRMID)
+        { 
+            // string connetionString = null;
+            SqlConnection sqlCnn;
+            SqlCommand sqlCmd;
+            string sql = null;
+            //connetionString = "Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password";
+            sql = "[dbo].[LIST_RetrieveMRMDetails] '" + MRMID.ToString() + "'";
+            sqlCnn = new SqlConnection(conStr);
+            try
+            {
+                sqlCnn.Open();
+                sqlCmd = new SqlCommand(sql, sqlCnn);
+                SqlDataReader sqlReader = sqlCmd.ExecuteReader();
+                while (sqlReader.Read())
+                {
+                    cboProjectCode.SelectedValue = sqlReader["ProjectID"].ToString();
+                    cboDeliveredTo.SelectedValue = sqlReader["DeliveredtoID"].ToString();
+                    TxtMRMNo.Text = sqlReader["MRMNo"].ToString();
+                    
+ 
+
+                }
+                sqlReader.Close();
+                sqlCmd.Dispose();
+                sqlCnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+
+        public void GetUserID(string parameter1)
+        {
+            TxtUserID.Text = parameter1;
+        }
+        private void DRM_Load(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void GetCurrency()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("[MSTR_LIST_CURRENCY]", con);
+                    adapter.Fill(dt);
+
+                    cboCostCode.DataSource = dt;
+                    cboCostCode.DisplayMember = "CurrencyCode";
+                    cboCostCode.ValueMember = "CurrencyCode";
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+
+        private void GetProjectCode()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                try
+                {
+
+                    SqlDataAdapter adapter = new SqlDataAdapter("[dbo].[LIST_MSTR_PROJECT_CODE]", con);
+                    adapter.Fill(dt);
+                    cboProjectCode.DataSource = dt;
+                    cboProjectCode.DisplayMember = "ProjectName";
+                    cboProjectCode.ValueMember = "ProjectID";
+
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+        private void GetProjectCode1()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("[dbo].[LIST_MSTR_PROJECT_CODE]", con);
+                    adapter.Fill(dt);
+                    cboDeliveredTo.DataSource = dt;
+                    cboDeliveredTo.DisplayMember = "ProjectName";
+                    cboDeliveredTo.ValueMember = "ProjectID";
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+
+
+        
+
+                 
+
+
+        private void WorkerDetails()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("[LIST_MSTR_WORKER_DETAILS]", con);
+                    adapter.Fill(dt);
+
+                    //de BY
+                   
+
+                  
+                    ////Certified BY
+                    cboCertifiedby.DataSource = dt;
+                    cboCertifiedby.DisplayMember = "FULL_NAME";
+                    cboCertifiedby.ValueMember = "WorkerID";
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+        private void WorkerDetails1()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("[LIST_MSTR_WORKER_DETAILS]", con);
+                    adapter.Fill(dt);
+
+                    //de BY
+
+
+                    ////Recieved BY
+                    CboRecievedBy.DataSource = dt;
+                    CboRecievedBy.DisplayMember = "FULL_NAME";
+                    CboRecievedBy.ValueMember = "WorkerID";
+
+                  
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+        private void GetSupplier()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("[LIST_MSTR_GET_SUPPLIER_CODE]", con);
+                    adapter.Fill(dt);
+
+                    cboSupplier.DataSource = dt;
+                    cboSupplier.DisplayMember = "SUPPLIER";
+                    cboSupplier.ValueMember = "SupplierID";
+                }
+
+                catch (Exception ex)
+                {
+                }
+            }
+
+        }
+
+
+
+
+
+    }
+}
