@@ -37,7 +37,16 @@ namespace StallionSuppyChain.Products
                     }
                     cbStatus.SelectedIndex = 0;
 
-                    dgvProducts.DataSource = new Product("LIST_Products").GetProduct();
+                    dtpFrom.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                    dtpTo.Value = DateTime.Now;
+
+                    dgvProducts.DataSource = new Product("LIST_Products")
+                        {
+                            CreatedDate = dtpFrom.Value,
+                            CreatedDateTo = dtpTo.Value,
+                            Description = txtSearchInput.Text,
+                            IncludeCreatedDate = true
+                        }.GetProduct();
                 }
                 catch (Exception ex)
                 {
@@ -270,7 +279,13 @@ namespace StallionSuppyChain.Products
 
                     btnNew.Enabled = true;
                     btnDelete.Enabled = true;
-                    dgvProducts.DataSource = new Product("LIST_Products").GetProduct();
+                    dgvProducts.DataSource = new Product("LIST_Products")
+                    {
+                        CreatedDate = dtpFrom.Value,
+                        CreatedDateTo = dtpTo.Value,
+                        Description = txtSearchInput.Text,
+                        IncludeCreatedDate = chkInclude.Checked
+                    }.GetProduct();
 
                     MessageBox.Show("Details has been saved successfully.", "Products");
 
@@ -530,7 +545,13 @@ namespace StallionSuppyChain.Products
             if (dialogResult == DialogResult.Yes)
             {
                 new Product("DELETE FROM [dbo].[MSTR_Products] WHERE ProductId=@ProductId").Delete(int.Parse(txtProductCode.Text));
-                dgvProducts.DataSource = new Product("LIST_Products").GetProduct();
+                dgvProducts.DataSource = new Product("LIST_Products")
+                {
+                    CreatedDate = dtpFrom.Value,
+                    CreatedDateTo = dtpTo.Value,
+                    Description = txtSearchInput.Text,
+                    IncludeCreatedDate = chkInclude.Checked
+                }.GetProduct();
                 btnNew_Click(sender, e);
             }
         }
@@ -539,6 +560,31 @@ namespace StallionSuppyChain.Products
         {
             if (txtWeight.Text == "")
                 txtWeight.Text = "0.00";
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            dgvProducts.DataSource = new Product("LIST_Products")
+            {
+                CreatedDate = dtpFrom.Value,
+                CreatedDateTo = dtpTo.Value,
+                Description = txtSearchInput.Text,
+                IncludeCreatedDate = chkInclude.Checked
+            }.GetProduct();
+        }
+
+        private void chkInclude_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkInclude.Checked)
+            {
+                dtpFrom.Enabled = true;
+                dtpTo.Enabled = true;
+            }
+            else
+            {
+                dtpFrom.Enabled = false;
+                dtpTo.Enabled = false;
+            }
         }
 
 

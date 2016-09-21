@@ -28,6 +28,8 @@ namespace StallionSuppyChain
         public int? SeasonId { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDateTo { get; set; }
+        public bool IncludeCreatedDate { get; set; }
 
         private string conStr = ConfigurationManager.ConnectionStrings["SCM_STALLIONLIVE"].ToString();
         private string sql;
@@ -95,6 +97,11 @@ namespace StallionSuppyChain
             {
                 using (var cmd = new SqlCommand(sql, con))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@DateFrom", CreatedDate);
+                    cmd.Parameters.AddWithValue("@DateTo", CreatedDateTo);
+                    cmd.Parameters.AddWithValue("@Description", Description);
+                    cmd.Parameters.AddWithValue("@IncludeCreatedDate", IncludeCreatedDate);
                     using (var sda = new SqlDataAdapter(cmd))
                     {
                         sda.Fill(dt);

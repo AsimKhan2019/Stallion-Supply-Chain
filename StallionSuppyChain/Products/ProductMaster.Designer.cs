@@ -98,6 +98,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.chkInclude = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -716,6 +717,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.AliceBlue;
+            this.tabPage2.Controls.Add(this.chkInclude);
             this.tabPage2.Controls.Add(this.btnSearch);
             this.tabPage2.Controls.Add(this.txtSearchInput);
             this.tabPage2.Controls.Add(this.dtpTo);
@@ -733,12 +735,13 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(434, 37);
+            this.btnSearch.Location = new System.Drawing.Point(434, 51);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearchInput
             // 
@@ -750,7 +753,7 @@
             // dtpTo
             // 
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(308, 38);
+            this.dtpTo.Location = new System.Drawing.Point(308, 52);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(112, 21);
             this.dtpTo.TabIndex = 5;
@@ -758,7 +761,7 @@
             // dtpFrom
             // 
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(137, 38);
+            this.dtpFrom.Location = new System.Drawing.Point(137, 52);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(112, 21);
             this.dtpFrom.TabIndex = 4;
@@ -766,20 +769,20 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(277, 44);
+            this.label20.Location = new System.Drawing.Point(277, 57);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(25, 13);
+            this.label20.Size = new System.Drawing.Size(34, 13);
             this.label20.TabIndex = 3;
-            this.label20.Text = "To:";
+            this.label20.Text = "And:";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(8, 44);
+            this.label19.Location = new System.Drawing.Point(73, 56);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(112, 13);
+            this.label19.Size = new System.Drawing.Size(61, 13);
             this.label19.TabIndex = 2;
-            this.label19.Text = "Date Range From:";
+            this.label19.Text = "Between:";
             // 
             // label18
             // 
@@ -794,17 +797,28 @@
             // 
             this.dgvProducts.AllowUserToAddRows = false;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Location = new System.Drawing.Point(3, 77);
+            this.dgvProducts.Location = new System.Drawing.Point(3, 81);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(747, 604);
+            this.dgvProducts.Size = new System.Drawing.Size(747, 599);
             this.dgvProducts.TabIndex = 0;
             this.dgvProducts.DoubleClick += new System.EventHandler(this.dgvProducts_DoubleClick);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
+            // 
+            // chkInclude
+            // 
+            this.chkInclude.AutoSize = true;
+            this.chkInclude.Location = new System.Drawing.Point(137, 35);
+            this.chkInclude.Name = "chkInclude";
+            this.chkInclude.Size = new System.Drawing.Size(160, 17);
+            this.chkInclude.TabIndex = 8;
+            this.chkInclude.Text = "Search by date created";
+            this.chkInclude.UseVisualStyleBackColor = true;
+            this.chkInclude.CheckedChanged += new System.EventHandler(this.chkInclude_CheckedChanged);
             // 
             // ProductMaster
             // 
@@ -909,5 +923,6 @@
         private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.TextBox txtSearchInput;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.CheckBox chkInclude;
     }
 }
