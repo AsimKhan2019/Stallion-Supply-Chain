@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using StallionSuppyChain.Reports;
 
 namespace StallionSuppyChain.Products
 {
@@ -18,9 +19,19 @@ namespace StallionSuppyChain.Products
         private bool fromProductListing = false;
         private List<ProductAttributeModel> productAttributes = new List<ProductAttributeModel>();
 
+
         public ProductMaster()
         {
             InitializeComponent();
+
+            // Creating checkbox without panel
+            chkSelectProducts.Size = new System.Drawing.Size(15, 15);
+            chkSelectProducts.BackColor = Color.Transparent;
+
+            // Reset properties
+            chkSelectProducts.Padding = new Padding(0);
+            chkSelectProducts.Margin = new Padding(0);
+            chkSelectProducts.Text = "";
         }
 
         private void ProductMaster_Load(object sender, EventArgs e)
@@ -53,6 +64,15 @@ namespace StallionSuppyChain.Products
                     MessageBox.Show(ex.Message);
                 }
             }
+
+            // Add checkbox to datagrid cell
+            dgvProducts.Controls.Add(chkSelectProducts);
+            DataGridViewHeaderCell header = dgvProducts.Columns[1].HeaderCell;
+            chkSelectProducts.Location = new Point(
+                header.ContentBounds.Left + (header.ContentBounds.Right - header.ContentBounds.Left + chkSelectProducts.Size.Width) / 2,
+                header.ContentBounds.Top + (header.ContentBounds.Bottom - header.ContentBounds.Top + chkSelectProducts.Size.Height) / 3
+            );
+
         }
 
         private List<SqlComboBox> GetSqlCommand()
@@ -161,16 +181,16 @@ namespace StallionSuppyChain.Products
         private void btnProductAttr_Click(object sender, EventArgs e)
         {
             var productAttr = new List<ProductAttributeModel>();
-            using (ItemMasterLookUp formTask = new ItemMasterLookUp())
+            using (ItemMasterLookUp formItemMaster = new ItemMasterLookUp())
             {
                 string productMasterFile = "PMF";
-                formTask.Test("", productMasterFile);
-                formTask.GetUserID("1");
-                var result = formTask.ShowDialog();
+                formItemMaster.Test("", productMasterFile);
+                formItemMaster.GetUserID("1");
+                var result = formItemMaster.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
-                    productAttr = formTask.ProductAttributes;
+                    productAttr = formItemMaster.ProductAttributes;
                     productAttributes.AddRange(productAttr);
                 }
                 foreach (ProductAttributeModel pa in productAttr)
@@ -417,7 +437,7 @@ namespace StallionSuppyChain.Products
         {
             try
             {
-                int Id = (int)dgvProducts.CurrentRow.Cells[0].Value;
+                int Id = (int)dgvProducts.CurrentRow.Cells[1].Value;
                 LoadProductById(Id);
                 LoadProductAttributes(Id);
                 if (Id > 0)
@@ -587,7 +607,70 @@ namespace StallionSuppyChain.Products
             }
         }
 
+        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvProducts.Columns["Select"].Index && e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvProducts.Rows[e.RowIndex];
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                if (chk.Value == chk.FalseValue || chk.Value == null)
+                {
+                    chk.Value = chk.TrueValue;
+                }
+                else
+                {
+                    chk.Value = chk.FalseValue;
+                }
 
+                dgvProducts.EndEdit();
+            }
+        }
+
+        private void chkSelectProducts_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvProducts.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+               
+                if(chkSelectProducts.Checked)
+                    chk.Value = chk.TrueValue;
+                else
+                    chk.Value = chk.FalseValue;
+
+                //if (chk.Value == chk.FalseValue || chk.Value == null)
+                //{
+                //    chk.Value = chk.TrueValue;
+                //}
+                //else
+                //{
+                //    chk.Value = chk.FalseValue;
+                //}
+            }
+            dgvProducts.EndEdit();
+        }
+
+        private void btnPrintBarcode_Click(object sender, EventArgs e)
+        {
+            var productCodes = new List<Int32>();
+            foreach (DataGridViewRow row in dgvProducts.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                if (chk.Value == chk.TrueValue)
+                {
+                    productCodes.Add((int)row.Cells[1].Value);
+                }
+            }
+            if (productCodes.Count > 0)
+            {
+                using (PrintBarcode formPrintBarcode = new PrintBarcode())
+                {
+                    formPrintBarcode.ProductCode = productCodes;
+                    formPrintBarcode.ShowDialog();
+                }
+            }
+            else
+                MessageBox.Show("Please select atleast 1 product to preview barcodes.", "Barcode Preview");
+        }
     }
 }
 

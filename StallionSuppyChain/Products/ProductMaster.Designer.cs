@@ -89,6 +89,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chkSelectProducts = new System.Windows.Forms.CheckBox();
+            this.chkInclude = new System.Windows.Forms.CheckBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchInput = new System.Windows.Forms.TextBox();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
@@ -97,8 +99,9 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.chkInclude = new System.Windows.Forms.CheckBox();
+            this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -160,6 +163,7 @@
             // txtWeight
             // 
             this.txtWeight.Location = new System.Drawing.Point(123, 25);
+            this.txtWeight.MaxLength = 10;
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(108, 21);
             this.txtWeight.TabIndex = 18;
@@ -717,6 +721,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.AliceBlue;
+            this.tabPage2.Controls.Add(this.btnPrintBarcode);
+            this.tabPage2.Controls.Add(this.chkSelectProducts);
             this.tabPage2.Controls.Add(this.chkInclude);
             this.tabPage2.Controls.Add(this.btnSearch);
             this.tabPage2.Controls.Add(this.txtSearchInput);
@@ -733,14 +739,38 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Product Listing";
             // 
+            // chkSelectProducts
+            // 
+            this.chkSelectProducts.AutoSize = true;
+            this.chkSelectProducts.Location = new System.Drawing.Point(55, 84);
+            this.chkSelectProducts.Name = "chkSelectProducts";
+            this.chkSelectProducts.Size = new System.Drawing.Size(15, 14);
+            this.chkSelectProducts.TabIndex = 9;
+            this.chkSelectProducts.UseVisualStyleBackColor = true;
+            this.chkSelectProducts.CheckedChanged += new System.EventHandler(this.chkSelectProducts_CheckedChanged);
+            // 
+            // chkInclude
+            // 
+            this.chkInclude.AutoSize = true;
+            this.chkInclude.Location = new System.Drawing.Point(137, 35);
+            this.chkInclude.Name = "chkInclude";
+            this.chkInclude.Size = new System.Drawing.Size(160, 17);
+            this.chkInclude.TabIndex = 8;
+            this.chkInclude.Text = "Search by date created";
+            this.chkInclude.UseVisualStyleBackColor = true;
+            this.chkInclude.CheckedChanged += new System.EventHandler(this.chkInclude_CheckedChanged);
+            // 
             // btnSearch
             // 
+            this.btnSearch.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(434, 51);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearchInput
@@ -752,6 +782,7 @@
             // 
             // dtpTo
             // 
+            this.dtpTo.Enabled = false;
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpTo.Location = new System.Drawing.Point(308, 52);
             this.dtpTo.Name = "dtpTo";
@@ -760,6 +791,7 @@
             // 
             // dtpFrom
             // 
+            this.dtpFrom.Enabled = false;
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFrom.Location = new System.Drawing.Point(137, 52);
             this.dtpFrom.Name = "dtpFrom";
@@ -797,28 +829,44 @@
             // 
             this.dgvProducts.AllowUserToAddRows = false;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Select});
             this.dgvProducts.Location = new System.Drawing.Point(3, 81);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(747, 599);
             this.dgvProducts.TabIndex = 0;
+            this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
             this.dgvProducts.DoubleClick += new System.EventHandler(this.dgvProducts_DoubleClick);
+            // 
+            // Select
+            // 
+            this.Select.FalseValue = "False";
+            this.Select.HeaderText = "";
+            this.Select.Name = "Select";
+            this.Select.ReadOnly = true;
+            this.Select.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Select.ToolTipText = "Select product for barcode printing";
+            this.Select.TrueValue = "True";
+            this.Select.Width = 35;
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // chkInclude
+            // btnPrintBarcode
             // 
-            this.chkInclude.AutoSize = true;
-            this.chkInclude.Location = new System.Drawing.Point(137, 35);
-            this.chkInclude.Name = "chkInclude";
-            this.chkInclude.Size = new System.Drawing.Size(160, 17);
-            this.chkInclude.TabIndex = 8;
-            this.chkInclude.Text = "Search by date created";
-            this.chkInclude.UseVisualStyleBackColor = true;
-            this.chkInclude.CheckedChanged += new System.EventHandler(this.chkInclude_CheckedChanged);
+            this.btnPrintBarcode.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnPrintBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintBarcode.ForeColor = System.Drawing.Color.White;
+            this.btnPrintBarcode.Location = new System.Drawing.Point(513, 51);
+            this.btnPrintBarcode.Name = "btnPrintBarcode";
+            this.btnPrintBarcode.Size = new System.Drawing.Size(129, 23);
+            this.btnPrintBarcode.TabIndex = 10;
+            this.btnPrintBarcode.Text = "Preview Barcode(s)";
+            this.btnPrintBarcode.UseVisualStyleBackColor = false;
+            this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
             // 
             // ProductMaster
             // 
@@ -924,5 +972,8 @@
         private System.Windows.Forms.TextBox txtSearchInput;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.CheckBox chkInclude;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
+        private System.Windows.Forms.CheckBox chkSelectProducts;
+        private System.Windows.Forms.Button btnPrintBarcode;
     }
 }
