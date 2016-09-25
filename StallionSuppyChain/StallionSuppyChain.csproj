@@ -219,7 +219,6 @@
       <DependentUpon>MaterialRequestMain.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductAttribute.cs" />
-    <Compile Include="ProductPlanner.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="Products\ProductMaster.cs">
       <SubType>Form</SubType>
