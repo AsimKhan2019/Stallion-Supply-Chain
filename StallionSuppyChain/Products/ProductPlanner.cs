@@ -225,9 +225,9 @@ namespace StallionSuppyChain.Products
             };
 
             if (!isEdit)
-                plannerId = new SC.Planner(sql, planner).Save();
+                plannerId = new SC.ProductPlanner(sql, planner).Save();
             else
-                new SC.Planner(sql, planner).Update();
+                new SC.ProductPlanner(sql, planner).Update();
         }
     }
 }
