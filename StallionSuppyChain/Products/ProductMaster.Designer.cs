@@ -89,6 +89,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.chkSelectProducts = new System.Windows.Forms.CheckBox();
             this.chkInclude = new System.Windows.Forms.CheckBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -101,7 +102,7 @@
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnPrintBarcode = new System.Windows.Forms.Button();
+            this.btnOpenPlanner = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -721,6 +722,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.AliceBlue;
+            this.tabPage2.Controls.Add(this.btnOpenPlanner);
             this.tabPage2.Controls.Add(this.btnPrintBarcode);
             this.tabPage2.Controls.Add(this.chkSelectProducts);
             this.tabPage2.Controls.Add(this.chkInclude);
@@ -738,6 +740,19 @@
             this.tabPage2.Size = new System.Drawing.Size(753, 684);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Product Listing";
+            // 
+            // btnPrintBarcode
+            // 
+            this.btnPrintBarcode.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnPrintBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintBarcode.ForeColor = System.Drawing.Color.White;
+            this.btnPrintBarcode.Location = new System.Drawing.Point(617, 51);
+            this.btnPrintBarcode.Name = "btnPrintBarcode";
+            this.btnPrintBarcode.Size = new System.Drawing.Size(129, 23);
+            this.btnPrintBarcode.TabIndex = 10;
+            this.btnPrintBarcode.Text = "Preview Barcode(s)";
+            this.btnPrintBarcode.UseVisualStyleBackColor = false;
+            this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
             // 
             // chkSelectProducts
             // 
@@ -855,18 +870,18 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // btnPrintBarcode
+            // btnOpenPlanner
             // 
-            this.btnPrintBarcode.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnPrintBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrintBarcode.ForeColor = System.Drawing.Color.White;
-            this.btnPrintBarcode.Location = new System.Drawing.Point(513, 51);
-            this.btnPrintBarcode.Name = "btnPrintBarcode";
-            this.btnPrintBarcode.Size = new System.Drawing.Size(129, 23);
-            this.btnPrintBarcode.TabIndex = 10;
-            this.btnPrintBarcode.Text = "Preview Barcode(s)";
-            this.btnPrintBarcode.UseVisualStyleBackColor = false;
-            this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
+            this.btnOpenPlanner.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnOpenPlanner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenPlanner.ForeColor = System.Drawing.Color.White;
+            this.btnOpenPlanner.Location = new System.Drawing.Point(513, 51);
+            this.btnOpenPlanner.Name = "btnOpenPlanner";
+            this.btnOpenPlanner.Size = new System.Drawing.Size(100, 23);
+            this.btnOpenPlanner.TabIndex = 11;
+            this.btnOpenPlanner.Text = "Open Planner";
+            this.btnOpenPlanner.UseVisualStyleBackColor = false;
+            this.btnOpenPlanner.Click += new System.EventHandler(this.btnOpenPlanner_Click);
             // 
             // ProductMaster
             // 
@@ -975,5 +990,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
         private System.Windows.Forms.CheckBox chkSelectProducts;
         private System.Windows.Forms.Button btnPrintBarcode;
+        private System.Windows.Forms.Button btnOpenPlanner;
     }
 }

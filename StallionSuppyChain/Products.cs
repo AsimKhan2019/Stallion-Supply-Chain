@@ -127,5 +127,24 @@ namespace StallionSuppyChain
                 }
             }
         }
+
+        public DataTable GetProduct(int Id)
+        {
+            var sql = "[dbo].[GET_ProductById]";
+            var dt = new DataTable();
+            using (var con = new SqlConnection(conStr))
+            {
+                using (var cmd = new SqlCommand(sql, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ProductId", Id);
+                    using (var sda = new SqlDataAdapter(cmd))
+                    {
+                        sda.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
     }
 }

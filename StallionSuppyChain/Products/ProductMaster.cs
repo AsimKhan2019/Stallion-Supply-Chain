@@ -42,7 +42,7 @@ namespace StallionSuppyChain.Products
             {
                 try
                 {
-                    foreach (SqlComboBox sql in GetSqlCommand())
+                    foreach (SqlComboBox sql in GetComboBoxSqlString())
                     {
                         LoadDropdownListReference(con, sql.ComboBox, sql.SqlString, sql.DisplayMember, sql.ValueMember);
                     }
@@ -75,7 +75,7 @@ namespace StallionSuppyChain.Products
 
         }
 
-        private List<SqlComboBox> GetSqlCommand()
+        private List<SqlComboBox> GetComboBoxSqlString()
         {
             List<SqlComboBox> ListSqlString = new List<SqlComboBox>();
 
@@ -631,8 +631,8 @@ namespace StallionSuppyChain.Products
             foreach (DataGridViewRow row in dgvProducts.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
-               
-                if(chkSelectProducts.Checked)
+
+                if (chkSelectProducts.Checked)
                     chk.Value = chk.TrueValue;
                 else
                     chk.Value = chk.FalseValue;
@@ -670,6 +670,25 @@ namespace StallionSuppyChain.Products
             }
             else
                 MessageBox.Show("Please select atleast 1 product to preview barcodes.", "Barcode Preview");
+        }
+
+        private void btnOpenPlanner_Click(object sender, EventArgs e)
+        {
+            using (ProductPlanner formPlanner = new ProductPlanner())
+            {
+                int productId = 0;
+                foreach (DataGridViewRow row in dgvProducts.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                    if (chk.Value == chk.TrueValue)
+                    {
+                        productId = (int)row.Cells[1].Value;
+                    }
+                }
+
+                formPlanner.ProductId = productId;
+                formPlanner.ShowDialog();
+            }
         }
     }
 }
