@@ -194,7 +194,6 @@
     <Compile Include="MRI\Material_verifyForRelease.Designer.cs">
       <DependentUpon>Material_verifyForRelease.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductPlanner.cs" />
     <Compile Include="Procurement\ItemMasterLookUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +219,7 @@
       <DependentUpon>MaterialRequestMain.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductAttribute.cs" />
+    <Compile Include="ProductPlanner.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="Products\ProductMaster.cs">
       <SubType>Form</SubType>
