@@ -57,11 +57,12 @@ namespace StallionSuppyChain.Products
                     LoadDropdownListReference(con, sql.ComboBox, sql.SqlString, sql.DisplayMember, sql.ValueMember);
                 }
             }
-            DisplayProductDetails();
+            LoadProductDetails();
             LoadProductAttributes(ProductId);
+            LoadProductPlanner();
         }
 
-        private void DisplayProductDetails()
+        private void LoadProductDetails()
         {
             var product = new Product().GetProduct(ProductId);
             foreach (DataRow row in product.Rows)
@@ -148,7 +149,7 @@ namespace StallionSuppyChain.Products
         private void btnSearch_Click(object sender, EventArgs e)
         {
             ProductId = int.Parse(txtProductCode.Text);
-            DisplayProductDetails();
+            //DisplayProductDetails();
             LoadProductAttributes(ProductId);
         }
 
@@ -214,8 +215,8 @@ namespace StallionSuppyChain.Products
                 ProcessCode = int.Parse(cbProcessCode.SelectedValue.ToString()),
                 DeptCode = cbDepartment.SelectedValue.ToString(),
                 DateCreated = DateTime.Parse(dtpDateCreated.Value.ToString()),
-                CreatedBy = 1,
-                ApprovedBy = 1,
+                CreatedBy = int.Parse(cbCreatedBy.SelectedValue.ToString()),
+                ApprovedBy = int.Parse(cbApprovedBy.SelectedValue.ToString()),
                 TargetOutput = int.Parse(txtTargetOutput.Text),
                 TargetOutputIn = int.Parse(txtTargetOutputIn.Text),
                 ActualOutput = int.Parse(txtActualOutput.Text),

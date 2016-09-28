@@ -76,7 +76,7 @@ namespace StallionSuppyChain
                     cmd.Parameters.AddWithValue("@DefaultWhseId", (object)DefaultWhseId ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@SeasonId", (object)SeasonId ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-                    cmd.Parameters.Add("@CreatedDate", SqlDbType.Date).Value = DateTime.Now;
+                    cmd.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
 
                     if (edit) cmd.Parameters.AddWithValue("@ProductId", ProductId);
 

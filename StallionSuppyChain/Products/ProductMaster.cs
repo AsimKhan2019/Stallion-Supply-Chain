@@ -256,7 +256,7 @@ namespace StallionSuppyChain.Products
                     {
                         BrandId = (int)cbBrand.SelectedValue,
                         ColorId = (int)cbColor.SelectedValue,
-                        CreatedBy = 1,
+                        CreatedBy = Global.UserId,
                         CreatedDate = DateTime.Now,
                         DefaultWhseId = string.IsNullOrEmpty(cbDefaultWarehouse.SelectedValue.ToString()) ? (int?)null : int.Parse(cbDefaultWarehouse.SelectedValue.ToString()),
                         Description = txtDescription.Text,
