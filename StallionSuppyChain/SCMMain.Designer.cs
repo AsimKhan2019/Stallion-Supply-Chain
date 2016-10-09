@@ -115,6 +115,8 @@
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.linkLabel32 = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -194,7 +196,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 856);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 711);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
             this.statusStrip1.Size = new System.Drawing.Size(1293, 22);
@@ -358,6 +360,8 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.AliceBlue;
+            this.tabPage1.Controls.Add(this.button5);
+            this.tabPage1.Controls.Add(this.linkLabel32);
             this.tabPage1.Controls.Add(this.linkLabel27);
             this.tabPage1.Controls.Add(this.linkLabel26);
             this.tabPage1.Controls.Add(this.linkLabel25);
@@ -797,7 +801,7 @@
             this.label1.Size = new System.Drawing.Size(1746, 23);
             this.label1.TabIndex = 56;
             this.label1.Text = "_________________________________________________________________________________" +
-                "___________________________________________";
+    "___________________________________________";
             // 
             // linkLabel21
             // 
@@ -1082,7 +1086,7 @@
             this.label15.Size = new System.Drawing.Size(1746, 23);
             this.label15.TabIndex = 86;
             this.label15.Text = "_________________________________________________________________________________" +
-                "___________________________________________";
+    "___________________________________________";
             // 
             // label14
             // 
@@ -1093,7 +1097,7 @@
             this.label14.Size = new System.Drawing.Size(1746, 23);
             this.label14.TabIndex = 85;
             this.label14.Text = "_________________________________________________________________________________" +
-                "___________________________________________";
+    "___________________________________________";
             // 
             // linkLabel15
             // 
@@ -1216,12 +1220,41 @@
             this.pictureBox3.TabIndex = 53;
             this.pictureBox3.TabStop = false;
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.White;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.Enabled = false;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Image = global::StallionSuppyChain.Properties.Resources.Buy_Upgrade_48;
+            this.button5.Location = new System.Drawing.Point(44, 327);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(96, 58);
+            this.button5.TabIndex = 115;
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // linkLabel32
+            // 
+            this.linkLabel32.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabel32.AutoSize = true;
+            this.linkLabel32.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel32.DisabledLinkColor = System.Drawing.Color.Black;
+            this.linkLabel32.ForeColor = System.Drawing.Color.Black;
+            this.linkLabel32.LinkColor = System.Drawing.Color.Black;
+            this.linkLabel32.Location = new System.Drawing.Point(42, 391);
+            this.linkLabel32.Name = "linkLabel32";
+            this.linkLabel32.Size = new System.Drawing.Size(92, 13);
+            this.linkLabel32.TabIndex = 116;
+            this.linkLabel32.TabStop = true;
+            this.linkLabel32.Text = "Product Master";
+            // 
             // SCMMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1293, 878);
+            this.ClientSize = new System.Drawing.Size(1293, 733);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
@@ -1241,8 +1274,8 @@
             this.Name = "SCMMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SCM";
-            this.Load += new System.EventHandler(this.SCMMain_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SCMMain_FormClosing);
+            this.Load += new System.EventHandler(this.SCMMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -1347,5 +1380,7 @@
         private System.Windows.Forms.ToolStripMenuItem supplierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projectsToolStripMenuItem;
         private System.Windows.Forms.LinkLabel linkLabel27;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.LinkLabel linkLabel32;
     }
 }

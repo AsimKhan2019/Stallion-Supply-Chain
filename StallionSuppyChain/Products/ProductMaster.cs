@@ -81,7 +81,7 @@ namespace StallionSuppyChain.Products
 
             ListSqlString.Add(new SqlComboBox()
             {
-                SqlString = "SELECT null Id, '--Select--' ProductTypeName UNION SELECT Id, ProductTypeName FROM REF_ProductTypes",
+                SqlString = "SELECT null Id, ' --Select--' ProductTypeName UNION SELECT Id, ProductTypeName FROM REF_ProductTypes ORDER BY ProductTypeName ASC",
                 DisplayMember = "ProductTypeName",
                 ValueMember = "Id",
                 ComboBox = cbProductType
@@ -89,7 +89,7 @@ namespace StallionSuppyChain.Products
 
             ListSqlString.Add(new SqlComboBox()
             {
-                SqlString = "SELECT null Id, '--Select--' StyleName UNION SELECT Id, StyleName FROM REF_Styles",
+                SqlString = "SELECT null Id, ' --Select--' StyleName UNION SELECT Id, StyleName FROM REF_Styles ORDER BY StyleName ASC",
                 DisplayMember = "StyleName",
                 ValueMember = "Id",
                 ComboBox = cbStyle
@@ -97,7 +97,7 @@ namespace StallionSuppyChain.Products
 
             ListSqlString.Add(new SqlComboBox()
             {
-                SqlString = "SELECT null Id, '--Select--' SizeName UNION SELECT Id, SizeName FROM REF_Sizes",
+                SqlString = "SELECT null Id, ' --Select--' SizeName UNION SELECT Id, SizeName FROM REF_Sizes ORDER BY SizeName ASC",
                 DisplayMember = "SizeName",
                 ValueMember = "Id",
                 ComboBox = cbSize
@@ -105,7 +105,7 @@ namespace StallionSuppyChain.Products
 
             ListSqlString.Add(new SqlComboBox()
             {
-                SqlString = "SELECT null Id, '--Select--' ColorName UNION SELECT Id, ColorName FROM REF_Colors",
+                SqlString = "SELECT null Id, ' --Select--' ColorName UNION SELECT Id, ColorName FROM REF_Colors ORDER BY ColorName ASC",
                 DisplayMember = "ColorName",
                 ValueMember = "Id",
                 ComboBox = cbColor
@@ -113,7 +113,7 @@ namespace StallionSuppyChain.Products
 
             ListSqlString.Add(new SqlComboBox()
             {
-                SqlString = "SELECT null Id, '--Select--' BrandName UNION SELECT Id, BrandName FROM REF_Brand",
+                SqlString = "SELECT null Id, ' --Select--' BrandName UNION SELECT Id, BrandName FROM REF_Brand ORDER BY BrandName ASC",
                 DisplayMember = "BrandName",
                 ValueMember = "Id",
                 ComboBox = cbBrand
@@ -121,7 +121,7 @@ namespace StallionSuppyChain.Products
 
             ListSqlString.Add(new SqlComboBox()
             {
-                SqlString = "SELECT null Id, '--Select--' DivisionName UNION SELECT Id, DivisionName FROM REF_Divisions",
+                SqlString = "SELECT null Id, ' --Select--' DivisionName UNION SELECT Id, DivisionName FROM REF_Divisions ORDER BY DivisionName ASC",
                 DisplayMember = "DivisionName",
                 ValueMember = "Id",
                 ComboBox = cbDivision
@@ -129,7 +129,7 @@ namespace StallionSuppyChain.Products
 
             ListSqlString.Add(new SqlComboBox()
             {
-                SqlString = "SELECT null Id, '--Select--' PriceName UNION SELECT Id, PriceName FROM REF_Prices",
+                SqlString = "SELECT null Id, ' --Select--' PriceName UNION SELECT Id, PriceName FROM REF_Prices ORDER BY PriceName ASC",
                 DisplayMember = "PriceName",
                 ValueMember = "Id",
                 ComboBox = cbPriceCode
@@ -137,7 +137,7 @@ namespace StallionSuppyChain.Products
 
             ListSqlString.Add(new SqlComboBox()
             {
-                SqlString = "SELECT null Id, '--Select--' PrimaryBuyerName UNION SELECT Id, PrimaryBuyerName FROM REF_PrimaryBuyers",
+                SqlString = "SELECT null Id, ' --Select--' PrimaryBuyerName UNION SELECT Id, PrimaryBuyerName FROM REF_PrimaryBuyers ORDER BY PrimaryBuyerName ASC",
                 DisplayMember = "PrimaryBuyerName",
                 ValueMember = "Id",
                 ComboBox = cbPrimaryBuyer
@@ -145,7 +145,7 @@ namespace StallionSuppyChain.Products
 
             ListSqlString.Add(new SqlComboBox()
             {
-                SqlString = "SELECT null Id, '--Select--' SeasonName UNION SELECT Id, SeasonName FROM REF_Seasons",
+                SqlString = "SELECT null Id, ' --Select--' SeasonName UNION SELECT Id, SeasonName FROM REF_Seasons ORDER BY SeasonName ASC",
                 DisplayMember = "SeasonName",
                 ValueMember = "Id",
                 ComboBox = cbSeason
@@ -153,7 +153,7 @@ namespace StallionSuppyChain.Products
 
             ListSqlString.Add(new SqlComboBox()
             {
-                SqlString = "SELECT null ProjectId, '--Select--' ProjectName UNION SELECT ProjectId, ProjectName FROM MSTR_Projects",
+                SqlString = "SELECT null ProjectId, ' --Select--' ProjectName UNION SELECT ProjectId, ProjectName FROM MSTR_Projects ORDER BY ProjectName ASC",
                 DisplayMember = "ProjectName",
                 ValueMember = "ProjectId",
                 ComboBox = cbDefaultWarehouse
@@ -287,10 +287,21 @@ namespace StallionSuppyChain.Products
                     {
                         sql = "INSERT INTO [dbo].[TRAN_ProductAttributes] (ProductId,ItemMasterId,Quantity,Categoryid1,CategoryId2,CategoryId3,ItemDescription1,ItemDescription2,ItemSpecs1,ItemSpecs2,UOM,CostCode) " +
                             "output INSERTED.Id VALUES(@ProductId,@ItemMasterId,@Quantity,@Categoryid1,@CategoryId2,@CategoryId3,@ItemDescription1,@ItemDescription2,@ItemSpecs1,@ItemSpecs2,@UOM,@CostCode)";
-                        foreach (var pa in productAttributes)
-                            pa.ProductId = int.Parse(txtProductCode.Text);
 
-                        var prodAttr = new ProductAttribute(sql, productAttributes);
+                        foreach (var pa in productAttributes)
+                        {
+                            pa.ProductId = int.Parse(txtProductCode.Text);
+                            pa.BatchNo = 0;
+                        }
+                        foreach (DataGridViewRow row in dgvProductAttributes.Rows)
+                        {
+                            int productAttrId = (int.Parse(row.Cells[1].Value.ToString()));
+                            int quantity = (int.Parse(row.Cells[3].Value.ToString()));
+                            productAttributes.Where(x => x.Id == productAttrId).FirstOrDefault().Quantity = quantity;
+                        }
+
+
+                        var prodAttr = new ProductAttribute(sql, productAttributes,null);
                         if (!isEdit)
                             prodAttr.Save();
                         else
@@ -512,7 +523,7 @@ namespace StallionSuppyChain.Products
 
         private void LoadProductAttributes(int Id)
         {
-            DataTable productAttr = new ProductAttribute("[dbo].[LIST_ProductAttributes]").GetProductAttributes(Id);
+            DataTable productAttr = new ProductAttribute("[dbo].[LIST_ProductAttributes]").GetProductAttributes(Id, 0);
             dgvProductAttributes.Rows.Clear();
             dgvProductAttributes.Refresh();
             productAttributes = new List<ProductAttributeModel>();

@@ -335,7 +335,7 @@ namespace StallionSuppyChain
                         Category1 = sqlReader.GetValue(17).ToString(),
                         Category2 = sqlReader.GetValue(18).ToString(),
                         Category3 = sqlReader.GetValue(19).ToString(),
-                        ItemCode = sqlReader.GetValue(1).ToString()
+                        ItemCode = sqlReader.GetValue(0).ToString()
                     };
 
                     lblStock.Text = sqlReader.GetValue(23).ToString();

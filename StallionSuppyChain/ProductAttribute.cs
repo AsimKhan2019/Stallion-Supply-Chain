@@ -14,17 +14,20 @@ namespace StallionSuppyChain
         private string conStr = ConfigurationManager.ConnectionStrings["SCM_STALLIONLIVE"].ToString();
         private string sql;
         private List<ProductAttributeModel> productAttr = new List<ProductAttributeModel>();
+        private string transaction;
 
         public ProductAttribute() { }
 
-        public ProductAttribute(string sqlString) {
+        public ProductAttribute(string sqlString)
+        {
             sql = sqlString;
         }
 
-        public ProductAttribute(string sqlString, List<ProductAttributeModel> pa)
+        public ProductAttribute(string sqlString, List<ProductAttributeModel> pa, string trans)
         {
             sql = sqlString;
             productAttr = pa;
+            transaction = trans;
         }
 
         public int Save()
@@ -47,12 +50,15 @@ namespace StallionSuppyChain
                     cmd.CommandType = CommandType.Text;
                     con.Open();
 
-                    if (edit)
-                        Delete(con, productAttr[0].ProductId);
+                    Delete(con);// productAttr[0].ProductId, productAttr[0].BatchNo);
 
                     foreach (ProductAttributeModel pa in productAttr)
                     {
-                        cmd.Parameters.AddWithValue("@ProductId", pa.ProductId);
+                        if (pa.ProductId > 0)
+                            cmd.Parameters.AddWithValue("@ProductId", pa.ProductId);
+                        else if (pa.BatchNo > 0)
+                            cmd.Parameters.AddWithValue("@BatchNo", pa.BatchNo);
+
                         cmd.Parameters.AddWithValue("@ItemMasterId", pa.ItemMasterId);
                         cmd.Parameters.AddWithValue("@Quantity", pa.Quantity);
                         cmd.Parameters.AddWithValue("@CategoryId1", pa.CategoryId1);
@@ -73,19 +79,50 @@ namespace StallionSuppyChain
             return totalInserted;
         }
 
+        public int Delete(SqlConnection con)
+        {
+            string sqlString = "";
+            int productId = 0;
+            int batchNo = 0;
+
+            if (transaction == "SUBMIT")
+            {
+                foreach (ProductAttributeModel pa in productAttr)
+                {
+                    new ProductPlanner().UpdateInventoryItemQuantity(pa.ItemMasterId, pa.BatchNo);
+                    productId = pa.ProductId;
+                    batchNo = pa.BatchNo;
+                }
+            }
+
+            sqlString = "DELETE FROM [dbo].[TRAN_ProductPlannerMaterials] WHERE BatchNo=@BatchNo";
+
+            using (var cmd = new SqlCommand(sqlString, con))
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@BatchNo", batchNo);
+
+                return (int)cmd.ExecuteNonQuery();
+            }
+        }
+
         public int Delete(SqlConnection con, int productId)
         {
-            using (var cmd = new SqlCommand("DELETE FROM [dbo].[TRAN_ProductAttributes] WHERE ProductId=@ProductId", con))
+            string sqlString = "";
+
+            sqlString = "DELETE FROM [dbo].[TRAN_ProductAttributes] WHERE ProductId=@ProductId";
+
+            using (var cmd = new SqlCommand(sqlString, con))
             {
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@ProductId", productId);
 
-                cmd.ExecuteNonQuery();
-                return 1;
+                return (int)cmd.ExecuteNonQuery();
             }
         }
 
-        public DataTable GetProductAttributes(int productId)
+
+        public DataTable GetProductAttributes(int productId, int batchNo)
         {
             var dt = new DataTable();
             using (var con = new SqlConnection(conStr))
@@ -93,7 +130,8 @@ namespace StallionSuppyChain
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ProductId",  productId);
+                    cmd.Parameters.AddWithValue("@ProductId", productId);
+                    cmd.Parameters.AddWithValue("@BatchNo", batchNo);
 
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                     {
@@ -102,7 +140,9 @@ namespace StallionSuppyChain
                     }
                 }
             }
-        } 
+        }
+
+
 
     }
 
@@ -110,6 +150,7 @@ namespace StallionSuppyChain
     {
         public int Id { get; set; }
         public int ProductId { get; set; }
+        public int BatchNo { get; set; }
         public int ItemMasterId { get; set; }
         public string ItemCode { get; set; }
         public decimal Quantity { get; set; }

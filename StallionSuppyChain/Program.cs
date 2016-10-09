@@ -16,7 +16,8 @@ namespace StallionSuppyChain
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StallionSuppyChain.Products.ProductMaster());
+            Application.Run(new StallionSuppyChain.Products.ProductPlannerMain());
+            //Application.Run(new StallionSuppyChain.Products.ProductMaster());
             //Application.Run(new StallionSuppyChain.SCMLogIN());
             //Application.Run(new StallionSuppyChain.Reports.PrintBarcode());
         }

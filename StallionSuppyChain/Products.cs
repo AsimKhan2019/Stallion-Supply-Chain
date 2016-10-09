@@ -146,5 +146,57 @@ namespace StallionSuppyChain
                 }
             }
         }
+
+        public bool Exist(int Id)
+        {
+            sql = "SELECT COUNT(ProductId) FROM [dbo].[MSTR_Products] WHERE ProductId=@ProductId";
+            using (var con = new SqlConnection(conStr))
+            {
+                using (var cmd = new SqlCommand(sql, con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ProductId", Id);
+                    con.Open();
+                    return ((int)cmd.ExecuteScalar() > 0 ? true : false);
+                }
+            }
+        }
+
+        public bool ExistInventory(SqlConnection con, int projectId, int productId)
+        {
+            using (var cmd = new SqlCommand("SELECT COUNT(*) FROM [dbo].[MSTR_ProductInventory] WHERE ProjectId=@ProjectId AND ProductId=@ProductId", con))
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@ProjectId", projectId);
+                cmd.Parameters.AddWithValue("@ProductId", productId);
+                con.Open();
+                return (int)cmd.ExecuteScalar() > 0 ? true : false;
+            }
+        }
+
+        public bool SaveInventory(int projectId, int productId, decimal quantity)
+        {
+            using (var con = new SqlConnection(conStr))
+            {
+                var sqlString = "";
+
+                if (ExistInventory(con, projectId, productId))
+                    sqlString = "UPDATE [dbo].[MSTR_ProductInventory] SET Quantity = Quantity + @Quantity, ModifiedDate=@ModifiedDate,ModifiedBy=@ModifiedBy WHERE ProjectId=@ProjectId AND ProductId=@ProductId";
+                else
+                    sqlString = "INSERT INTO [dbo].[MSTR_ProductInventory] (ProductId,ProjectId,Quantity,DateCreated,CreatedBy,ModifiedDate,ModifiedBy) " +
+                        " VALUES(@ProductId,@ProjectId,@Quantity,@DateCreated,@CreatedBy,@ModifiedDate,@ModifiedBy)";
+
+                using (var cmd = new SqlCommand(sqlString, con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ProjectId", projectId);
+                    cmd.Parameters.AddWithValue("@ProductId", productId);
+                    con.Open();
+                }
+
+            }
+
+            return true;
+        }
     }
 }

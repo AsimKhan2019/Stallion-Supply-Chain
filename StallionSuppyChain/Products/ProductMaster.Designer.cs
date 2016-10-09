@@ -39,19 +39,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.dgvProductAttributes = new System.Windows.Forms.DataGridView();
-            this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ProductAttrId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDescription1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDescription2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemSpecs1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemSpecs2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnProductAttr = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbPrimaryBuyer = new System.Windows.Forms.ComboBox();
@@ -89,6 +76,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnOpenPlanner = new System.Windows.Forms.Button();
             this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.chkSelectProducts = new System.Windows.Forms.CheckBox();
             this.chkInclude = new System.Windows.Forms.CheckBox();
@@ -102,7 +90,19 @@
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnOpenPlanner = new System.Windows.Forms.Button();
+            this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ProductAttrId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDescription1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDescription2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemSpecs1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemSpecs2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -243,90 +243,10 @@
             this.CostCode});
             this.dgvProductAttributes.Location = new System.Drawing.Point(6, 501);
             this.dgvProductAttributes.Name = "dgvProductAttributes";
-            this.dgvProductAttributes.ReadOnly = true;
             this.dgvProductAttributes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductAttributes.Size = new System.Drawing.Size(741, 173);
             this.dgvProductAttributes.TabIndex = 6;
             this.dgvProductAttributes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductAttributes_CellContentClick);
-            // 
-            // Remove
-            // 
-            this.Remove.HeaderText = "Remove";
-            this.Remove.Name = "Remove";
-            this.Remove.ReadOnly = true;
-            // 
-            // ProductAttrId
-            // 
-            this.ProductAttrId.HeaderText = "";
-            this.ProductAttrId.Name = "ProductAttrId";
-            this.ProductAttrId.ReadOnly = true;
-            this.ProductAttrId.Visible = false;
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.HeaderText = "Item Code";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // Category1
-            // 
-            this.Category1.HeaderText = "Category 1";
-            this.Category1.Name = "Category1";
-            this.Category1.ReadOnly = true;
-            // 
-            // Category2
-            // 
-            this.Category2.HeaderText = "Category 2";
-            this.Category2.Name = "Category2";
-            this.Category2.ReadOnly = true;
-            // 
-            // Category3
-            // 
-            this.Category3.HeaderText = "Category 3";
-            this.Category3.Name = "Category3";
-            this.Category3.ReadOnly = true;
-            // 
-            // ItemDescription1
-            // 
-            this.ItemDescription1.HeaderText = "Item Description 1";
-            this.ItemDescription1.Name = "ItemDescription1";
-            this.ItemDescription1.ReadOnly = true;
-            // 
-            // ItemDescription2
-            // 
-            this.ItemDescription2.HeaderText = "Item Description 2";
-            this.ItemDescription2.Name = "ItemDescription2";
-            this.ItemDescription2.ReadOnly = true;
-            // 
-            // ItemSpecs1
-            // 
-            this.ItemSpecs1.HeaderText = "Specs 1";
-            this.ItemSpecs1.Name = "ItemSpecs1";
-            this.ItemSpecs1.ReadOnly = true;
-            // 
-            // ItemSpecs2
-            // 
-            this.ItemSpecs2.HeaderText = "Specs 2";
-            this.ItemSpecs2.Name = "ItemSpecs2";
-            this.ItemSpecs2.ReadOnly = true;
-            // 
-            // UOM
-            // 
-            this.UOM.HeaderText = "UOM";
-            this.UOM.Name = "UOM";
-            this.UOM.ReadOnly = true;
-            // 
-            // CostCode
-            // 
-            this.CostCode.HeaderText = "Cost Code";
-            this.CostCode.Name = "CostCode";
-            this.CostCode.ReadOnly = true;
             // 
             // btnProductAttr
             // 
@@ -609,17 +529,19 @@
             // 
             // txtBarcode
             // 
-            this.txtBarcode.Font = new System.Drawing.Font("IDAHC39M Code 39 Barcode", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.txtBarcode.Location = new System.Drawing.Point(407, 25);
+            this.txtBarcode.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtBarcode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBarcode.Font = new System.Drawing.Font("IDAHC39M Code 39 Barcode", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.txtBarcode.Location = new System.Drawing.Point(407, 12);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.ReadOnly = true;
-            this.txtBarcode.Size = new System.Drawing.Size(199, 48);
+            this.txtBarcode.Size = new System.Drawing.Size(316, 70);
             this.txtBarcode.TabIndex = 6;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(316, 55);
+            this.label17.Location = new System.Drawing.Point(314, 29);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(89, 13);
             this.label17.TabIndex = 4;
@@ -642,6 +564,7 @@
             this.txtProductCode.Location = new System.Drawing.Point(106, 26);
             this.txtProductCode.Name = "txtProductCode";
             this.txtProductCode.ReadOnly = true;
+            this.txtProductCode.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtProductCode.Size = new System.Drawing.Size(173, 21);
             this.txtProductCode.TabIndex = 4;
             // 
@@ -740,6 +663,19 @@
             this.tabPage2.Size = new System.Drawing.Size(753, 684);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Product Listing";
+            // 
+            // btnOpenPlanner
+            // 
+            this.btnOpenPlanner.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnOpenPlanner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenPlanner.ForeColor = System.Drawing.Color.White;
+            this.btnOpenPlanner.Location = new System.Drawing.Point(513, 51);
+            this.btnOpenPlanner.Name = "btnOpenPlanner";
+            this.btnOpenPlanner.Size = new System.Drawing.Size(100, 23);
+            this.btnOpenPlanner.TabIndex = 11;
+            this.btnOpenPlanner.Text = "Open Planner";
+            this.btnOpenPlanner.UseVisualStyleBackColor = false;
+            this.btnOpenPlanner.Click += new System.EventHandler(this.btnOpenPlanner_Click);
             // 
             // btnPrintBarcode
             // 
@@ -843,6 +779,7 @@
             // dgvProducts
             // 
             this.dgvProducts.AllowUserToAddRows = false;
+            this.dgvProducts.AllowUserToDeleteRows = false;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select});
@@ -870,18 +807,82 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // btnOpenPlanner
+            // Remove
             // 
-            this.btnOpenPlanner.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnOpenPlanner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenPlanner.ForeColor = System.Drawing.Color.White;
-            this.btnOpenPlanner.Location = new System.Drawing.Point(513, 51);
-            this.btnOpenPlanner.Name = "btnOpenPlanner";
-            this.btnOpenPlanner.Size = new System.Drawing.Size(100, 23);
-            this.btnOpenPlanner.TabIndex = 11;
-            this.btnOpenPlanner.Text = "Open Planner";
-            this.btnOpenPlanner.UseVisualStyleBackColor = false;
-            this.btnOpenPlanner.Click += new System.EventHandler(this.btnOpenPlanner_Click);
+            this.Remove.HeaderText = "Remove";
+            this.Remove.Name = "Remove";
+            // 
+            // ProductAttrId
+            // 
+            this.ProductAttrId.HeaderText = "";
+            this.ProductAttrId.Name = "ProductAttrId";
+            this.ProductAttrId.ReadOnly = true;
+            this.ProductAttrId.Visible = false;
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "Item Code";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Category1
+            // 
+            this.Category1.HeaderText = "Category 1";
+            this.Category1.Name = "Category1";
+            this.Category1.ReadOnly = true;
+            // 
+            // Category2
+            // 
+            this.Category2.HeaderText = "Category 2";
+            this.Category2.Name = "Category2";
+            this.Category2.ReadOnly = true;
+            // 
+            // Category3
+            // 
+            this.Category3.HeaderText = "Category 3";
+            this.Category3.Name = "Category3";
+            this.Category3.ReadOnly = true;
+            // 
+            // ItemDescription1
+            // 
+            this.ItemDescription1.HeaderText = "Item Description 1";
+            this.ItemDescription1.Name = "ItemDescription1";
+            this.ItemDescription1.ReadOnly = true;
+            // 
+            // ItemDescription2
+            // 
+            this.ItemDescription2.HeaderText = "Item Description 2";
+            this.ItemDescription2.Name = "ItemDescription2";
+            this.ItemDescription2.ReadOnly = true;
+            // 
+            // ItemSpecs1
+            // 
+            this.ItemSpecs1.HeaderText = "Specs 1";
+            this.ItemSpecs1.Name = "ItemSpecs1";
+            this.ItemSpecs1.ReadOnly = true;
+            // 
+            // ItemSpecs2
+            // 
+            this.ItemSpecs2.HeaderText = "Specs 2";
+            this.ItemSpecs2.Name = "ItemSpecs2";
+            this.ItemSpecs2.ReadOnly = true;
+            // 
+            // UOM
+            // 
+            this.UOM.HeaderText = "UOM";
+            this.UOM.Name = "UOM";
+            this.UOM.ReadOnly = true;
+            // 
+            // CostCode
+            // 
+            this.CostCode.HeaderText = "Cost Code";
+            this.CostCode.Name = "CostCode";
+            this.CostCode.ReadOnly = true;
             // 
             // ProductMaster
             // 
@@ -966,6 +967,18 @@
         private System.Windows.Forms.ComboBox cbDefaultWarehouse;
         private System.Windows.Forms.TextBox txtWeight;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
+        private System.Windows.Forms.TextBox txtSearchInput;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.CheckBox chkInclude;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
+        private System.Windows.Forms.CheckBox chkSelectProducts;
+        private System.Windows.Forms.Button btnPrintBarcode;
+        private System.Windows.Forms.Button btnOpenPlanner;
         private System.Windows.Forms.DataGridViewButtonColumn Remove;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductAttrId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
@@ -979,17 +992,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemSpecs2;
         private System.Windows.Forms.DataGridViewTextBoxColumn UOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn CostCode;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.DateTimePicker dtpTo;
-        private System.Windows.Forms.DateTimePicker dtpFrom;
-        private System.Windows.Forms.TextBox txtSearchInput;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.CheckBox chkInclude;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
-        private System.Windows.Forms.CheckBox chkSelectProducts;
-        private System.Windows.Forms.Button btnPrintBarcode;
-        private System.Windows.Forms.Button btnOpenPlanner;
     }
 }
